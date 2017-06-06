@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 	"twitch"
 )
 
@@ -42,7 +43,7 @@ func getStreamers() (*[]Streamer, error) {
 
 	streamers := make([]Streamer, 0, len(*streams))
 	for _, user := range *users {
-		stream, ok := (*streams)[user.TwitchID]
+		stream, ok := (*streams)[strings.ToLower(user.TwitchID)]
 		if ok {
 			streamers = append(streamers, Streamer{Stream: stream, User: user})
 		}
