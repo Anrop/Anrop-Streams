@@ -13,14 +13,14 @@ import (
 func StreamsHandler(w http.ResponseWriter, r *http.Request) {
 	streamers, err := getStreamers()
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "", http.StatusInternalServerError)
 		return
 	}
 
 	output, err := json.Marshal(streamers)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error marshalling json: %q\n", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "", http.StatusInternalServerError)
 		return
 	}
 
