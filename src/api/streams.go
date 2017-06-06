@@ -19,7 +19,7 @@ func StreamsHandler(w http.ResponseWriter, r *http.Request) {
 
 	output, err := json.Marshal(streamers)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error marshalling json: %q", err)
+		fmt.Fprintf(os.Stderr, "Error marshalling json: %q\n", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
@@ -31,13 +31,13 @@ func StreamsHandler(w http.ResponseWriter, r *http.Request) {
 func getStreamers() (*[]Streamer, error) {
 	users, err := db.GetUsers()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error reading users from database: %q", err)
+		fmt.Fprintf(os.Stderr, "Error reading users from database: %q\n", err)
 		return nil, err
 	}
 
 	streams, err := getTwitchStreams(*users)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error fetching data from Twitch: %q", err)
+		fmt.Fprintf(os.Stderr, "Error fetching data from Twitch: %q\n", err)
 		return nil, err
 	}
 
