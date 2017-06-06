@@ -10,7 +10,7 @@ Code is written in [Go](https://golang.org/) and uses [gb](https://getgb.io/) to
 
 Compile the sources with `gb build`.
 
-Start the API with the `cmd` binary in the bin folder.
+Start the API with the `streams` binary in the `bin` folder.
 Server will be available at `$PORT`.
 
 ## Environment Variables
