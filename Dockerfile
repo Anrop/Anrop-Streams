@@ -10,4 +10,4 @@ ADD . $APP_HOME
 
 RUN gb build all
 
-CMD $APP_HOME/bin/cmd
+CMD $APP_HOME/bin/streams
