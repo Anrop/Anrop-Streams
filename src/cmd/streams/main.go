@@ -43,6 +43,8 @@ func main() {
 	handler = handlers.CORS()(r)
 	handler = handlers.CompressHandler(handler)
 
+	fmt.Fprintf(os.Stdout, "Server launching on port %s\n", port)
+
 	// Bind to a port and pass our router in
 	http.ListenAndServe(":"+port, handler)
 }
