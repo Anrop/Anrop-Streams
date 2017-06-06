@@ -36,7 +36,7 @@ func GetUsers() (*[]User, error) {
 		err = rows.Scan(&user.Avatar, &user.ID, &user.Username, &user.TwitchID)
 
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "Error reading user from database: %q", err)
+			fmt.Fprintf(os.Stderr, "Error reading user from database: %q\n", err)
 		} else {
 			user = fixAvatarURL(user)
 			users = append(users, user)
