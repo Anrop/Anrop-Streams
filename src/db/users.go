@@ -8,22 +8,27 @@ import (
 func GetUsers() (*[]User, error) {
 	rows, err := Database.Query(`
 		SELECT
-			user_avatar,
-			user_id,
-			user_name,
-			user_twitch
+			users.user_avatar,
+			users.user_id,
+			users.user_name,
+			users.user_twitch
 		FROM
-			fusion7_users
+			fusion7_users AS users
+		LEFT JOIN fusion7_operations_slots AS slots ON slots.user_id = users.user_id
 		WHERE
-			user_lastvisit > (UNIX_TIMESTAMP(NOW()) - 30 * 24 * 60 * 60)
+			users.user_lastvisit > (UNIX_TIMESTAMP(NOW()) - 30 * 24 * 60 * 60)
 			AND
-			user_status = 0
+			users.user_status = 0
 			AND
-			user_twitch IS NOT NULL
+			users.user_twitch IS NOT NULL
 			AND
-			CHAR_LENGTH(user_twitch) > 0
+			CHAR_LENGTH(users.user_twitch) > 0
+		GROUP BY
+			slots.user_id
+		HAVING
+			COUNT(slots.user_id) > 10
 		ORDER BY
-			user_name
+			users.user_name
 	`)
 
 	if err != nil {
