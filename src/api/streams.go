@@ -53,7 +53,12 @@ func getStreamers() (*[]Streamer, error) {
 }
 
 func getTwitchStreams(users []db.User) (*map[string]Stream, error) {
-	streams, err := twitch.GetStreams(users)
+	var channels []string
+	for _, user := range users {
+		channels = append(channels, user.TwitchID)
+	}
+
+	streams, err := twitch.GetStreams(channels)
 	if err != nil {
 		return nil, err
 	}
