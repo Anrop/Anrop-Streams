@@ -4,7 +4,7 @@
 		{
 			"importpath": "github.com/go-sql-driver/mysql",
 			"repository": "https://github.com/go-sql-driver/mysql",
-			"revision": "2e00b5cd70399450106cec6431c2e2ce3cae5034",
+			"revision": "9181e3a86a19bacd63e68d43ae8b7b36320d8092",
 			"branch": "master"
 		},
 		{
@@ -17,32 +17,32 @@
 		{
 			"importpath": "github.com/gorilla/handlers",
 			"repository": "https://github.com/gorilla/handlers",
-			"revision": "3a5767ca75ece5f7f1440b1d16975247f8d8b221",
+			"revision": "90663712d74cb411cbef281bc1e08c19d1a76145",
 			"branch": "master"
 		},
 		{
 			"importpath": "github.com/gorilla/mux",
 			"repository": "https://github.com/gorilla/mux",
-			"revision": "392c28fe23e1c45ddba891b0320b3b5df220beea",
+			"revision": "5ab525f4fb1678e197ae59401e9050fa0b6cb5fd",
 			"branch": "master"
 		},
 		{
 			"importpath": "github.com/joho/godotenv",
 			"repository": "https://github.com/joho/godotenv",
-			"revision": "726cc8b906e3d31c70a9671c90a13716a8d3f50d",
+			"revision": "6d367c18edf6ca7fd004efd6863e4c5728fa858e",
 			"branch": "master"
 		},
 		{
 			"importpath": "github.com/joho/godotenv/autoload",
 			"repository": "https://github.com/joho/godotenv",
-			"revision": "726cc8b906e3d31c70a9671c90a13716a8d3f50d",
+			"revision": "6d367c18edf6ca7fd004efd6863e4c5728fa858e",
 			"branch": "master",
 			"path": "/autoload"
 		},
 		{
 			"importpath": "github.com/knspriggs/go-twitch",
 			"repository": "https://github.com/knspriggs/go-twitch",
-			"revision": "960df600bf2c90211a0261621709cc34fc0dc346",
+			"revision": "1ddbb1bbce1c5687c945a6cab5327ca55b548e01",
 			"branch": "master"
 		}
 	]
