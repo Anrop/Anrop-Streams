@@ -16,6 +16,7 @@ import (
 func main() {
 	port := os.Getenv("PORT")
 	databaseURL := os.Getenv("DATABASE_URL")
+	newRelicLicenseKey := os.Getenv("NEW_RELIC_LICENSE_KEY")
 	twitchClientID := os.Getenv("TWITCH_CLIENT_ID")
 
 	if port == "" {
@@ -38,6 +39,11 @@ func main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", api.StreamsHandler)
+
+	if newRelicLicenseKey != "" {
+		api.SetupNewRelic(newRelicLicenseKey)
+		r = api.InstrumentRoutes(r)
+	}
 
 	var handler http.Handler
 	handler = handlers.CORS()(r)

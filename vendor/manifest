@@ -44,6 +44,12 @@
 			"repository": "https://github.com/knspriggs/go-twitch",
 			"revision": "1ddbb1bbce1c5687c945a6cab5327ca55b548e01",
 			"branch": "master"
+		},
+		{
+			"importpath": "github.com/newrelic/go-agent",
+			"repository": "https://github.com/newrelic/go-agent",
+			"revision": "f5bce3387232559bcbe6a5f8227c4bf508dac1ba",
+			"branch": "master"
 		}
 	]
 }
