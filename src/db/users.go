@@ -48,6 +48,8 @@ func GetUsers() (*[]User, error) {
 		}
 	}
 
+	rows.Close()
+
 	return &users, nil
 }
 
