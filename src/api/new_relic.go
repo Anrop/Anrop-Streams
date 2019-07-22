@@ -15,6 +15,7 @@ var (
 	newRelicApp *newrelic.Application
 )
 
+// SetupNewRelic performs initial configuration
 func SetupNewRelic(licenseKey string) {
 	config := newrelic.NewConfig(appName, licenseKey)
 
@@ -28,6 +29,7 @@ func SetupNewRelic(licenseKey string) {
 	}
 }
 
+// InstrumentRoutes adds NewRelic routes to mux.Router
 func InstrumentRoutes(r *mux.Router) *mux.Router {
 	if newRelicApp != nil {
 		return newrelicGorilla.InstrumentRoutes(r, *newRelicApp)

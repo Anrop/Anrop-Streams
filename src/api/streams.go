@@ -10,6 +10,7 @@ import (
 	"twitch"
 )
 
+// StreamsHandler used to handle API request for current streams
 func StreamsHandler(w http.ResponseWriter, r *http.Request) {
 	streamers, err := getStreamers()
 	if err != nil {

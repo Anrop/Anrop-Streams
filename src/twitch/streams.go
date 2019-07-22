@@ -7,6 +7,7 @@ import (
 	twitchAPI "github.com/knspriggs/go-twitch"
 )
 
+// GetStreams returns a list of channels from twitch
 func GetStreams(channels []string) (*twitchAPI.GetStreamsOutputType, error) {
 	if TwitchSession == nil {
 		return nil, errors.New("Twitch Client not initialized")
