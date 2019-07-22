@@ -5,6 +5,8 @@ import (
 	"os"
 )
 
+// GetUsers returns a list of all users in database that have a twitch setting
+// and have been on the webpage for the last 30 days or returns error.
 func GetUsers() (*[]User, error) {
 	rows, err := Database.Query(`
 		SELECT

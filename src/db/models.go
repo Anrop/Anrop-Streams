@@ -1,5 +1,6 @@
 package db
 
+// User database model
 type User struct {
 	Avatar   string `json:"avatar"`
 	ID       string `json:"id"`
