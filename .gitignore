@@ -28,3 +28,6 @@ pkg
 
 # Dotenv file
 .env
+
+# Binary
+Anrop-Streams
