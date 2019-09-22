@@ -8,6 +8,7 @@ import (
 type Stream struct {
 	Image string `json:"image"`
 	Link  string `json:"link"`
+	Title string `json:"title"`
 }
 
 // Streamer data model

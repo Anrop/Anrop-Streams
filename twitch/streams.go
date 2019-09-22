@@ -2,18 +2,22 @@ package twitch
 
 import (
 	"errors"
-	"strings"
-
-	twitchAPI "github.com/knspriggs/go-twitch"
+	"github.com/nicklaw5/helix"
 )
 
 // GetStreams returns a list of channels from twitch
-func GetStreams(channels []string) (*twitchAPI.GetStreamsOutputType, error) {
-	if TwitchSession == nil {
-		return nil, errors.New("Twitch Client not initialized")
+func GetStreams(channels []string) (*[]helix.Stream, error) {
+	if Client == nil {
+		return nil, errors.New("TwitchClient not initialized")
 	}
 
-	streamsQuery := twitchAPI.GetStreamsInputType{Channel: strings.Join(channels, ",")}
+	response, err := Client.GetStreams(&helix.StreamsParams{
+		UserLogins: channels,
+	})
 
-	return TwitchSession.GetStream(&streamsQuery)
+	if err != nil {
+		return nil, err
+	}
+
+	return &response.Data.Streams, nil
 }

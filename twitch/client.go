@@ -1,17 +1,19 @@
 package twitch
 
 import (
-	twitchAPI "github.com/knspriggs/go-twitch"
+	"github.com/nicklaw5/helix"
 )
 
 var (
-	// TwitchSession holds the session for TwitchAPI access
-	TwitchSession *twitchAPI.Session
+	// Client holds the client for Twitch API access
+	Client *helix.Client
 )
 
 // CreateSession creates a new session to the Twitch API
 func CreateSession(clientID string) error {
 	var err error
-	TwitchSession, err = twitchAPI.NewSession(twitchAPI.NewSessionInput{ClientID: clientID})
+	Client, err = helix.NewClient(&helix.Options{
+		ClientID: clientID,
+	})
 	return err
 }
