@@ -62,13 +62,23 @@ func getTwitchStreams(users []db.User) (*map[string]Stream, error) {
 
 	streams, err := twitch.GetStreams(channels)
 	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error fetching streams from Twitch: %q\n", err)
 		return nil, err
 	}
 
 	streamsMap := make(map[string]Stream)
-	for _, stream := range streams.Streams {
-		streamsMap[stream.Channel.Name] = Stream{Image: stream.Preview["large"], Link: stream.Channel.URL}
+	for _, stream := range *streams {
+		streamsMap[stream.UserName] = Stream{
+			Image: formatThumbnailURL(stream.ThumbnailURL),
+			Link:  fmt.Sprintf("https://twitch.tv/%s", stream.UserName),
+			Title: stream.Title,
+		}
 	}
 
 	return &streamsMap, nil
+}
+
+func formatThumbnailURL(thumbnailURL string) string {
+	// Old Large was 640x360
+	return strings.Replace(strings.Replace(thumbnailURL, "{width}", "640", 1), "{height}", "360", 1)
 }
