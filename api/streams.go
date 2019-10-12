@@ -68,7 +68,7 @@ func getTwitchStreams(users []db.User) (*map[string]Stream, error) {
 
 	streamsMap := make(map[string]Stream)
 	for _, stream := range *streams {
-		streamsMap[stream.UserName] = Stream{
+		streamsMap[strings.ToLower(stream.UserName)] = Stream{
 			Image: formatThumbnailURL(stream.ThumbnailURL),
 			Link:  fmt.Sprintf("https://twitch.tv/%s", stream.UserName),
 			Title: stream.Title,
