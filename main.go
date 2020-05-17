@@ -18,6 +18,7 @@ func main() {
 	databaseURL := os.Getenv("DATABASE_URL")
 	newRelicLicenseKey := os.Getenv("NEW_RELIC_LICENSE_KEY")
 	twitchClientID := os.Getenv("TWITCH_CLIENT_ID")
+	twitchClientSecret := os.Getenv("TWITCH_CLIENT_SECRET")
 
 	if port == "" {
 		port = "8080"
@@ -31,7 +32,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	err = twitch.CreateSession(twitchClientID)
+	err = twitch.CreateSession(twitchClientID, twitchClientSecret)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error initializing Twitch Session: %q\n", err)
 		os.Exit(1)

@@ -11,6 +11,11 @@ func GetStreams(channels []string) (*[]helix.Stream, error) {
 		return nil, errors.New("TwitchClient not initialized")
 	}
 
+	err := UpdateAppToken()
+	if err != nil {
+		return nil, err
+	}
+
 	response, err := Client.GetStreams(&helix.StreamsParams{
 		UserLogins: channels,
 	})
