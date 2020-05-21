@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/gorilla/mux"
-	newrelic "github.com/newrelic/go-agent"
-	newrelicGorilla "github.com/newrelic/go-agent/_integrations/nrgorilla/v1"
+	newrelicGorilla "github.com/newrelic/go-agent/v3/integrations/nrgorilla"
+	newrelic "github.com/newrelic/go-agent/v3/newrelic"
 )
 
 const appName = "Streams"
@@ -17,11 +17,11 @@ var (
 
 // SetupNewRelic performs initial configuration
 func SetupNewRelic(licenseKey string) {
-	config := newrelic.NewConfig(appName, licenseKey)
-
-	var err error
-	app, err := newrelic.NewApplication(config)
-	newRelicApp = &app
+	app, err := newrelic.NewApplication(
+		newrelic.ConfigAppName(appName),
+		newrelic.ConfigLicense(licenseKey),
+	)
+	newRelicApp = app
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error starting New Relic: %q", err)
@@ -32,7 +32,7 @@ func SetupNewRelic(licenseKey string) {
 // InstrumentRoutes adds NewRelic routes to mux.Router
 func InstrumentRoutes(r *mux.Router) *mux.Router {
 	if newRelicApp != nil {
-		return newrelicGorilla.InstrumentRoutes(r, *newRelicApp)
+		return newrelicGorilla.InstrumentRoutes(r, newRelicApp)
 	}
 
 	return r

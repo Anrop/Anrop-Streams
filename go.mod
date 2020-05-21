@@ -3,12 +3,11 @@ module github.com/Anrop/Anrop-Streams
 go 1.12
 
 require (
-	github.com/go-sql-driver/mysql v0.0.0-20190510102335-877a9775f068
-	github.com/gorilla/context v1.1.1 // indirect
-	github.com/gorilla/handlers v1.3.0
-	github.com/gorilla/mux v0.0.0-20171208160815-5ab525f4fb16
-	github.com/joho/godotenv v0.0.0-20171110010315-6d367c18edf6
-	github.com/newrelic/go-agent v1.11.0
-	github.com/nicklaw5/helix v0.5.2
-	google.golang.org/appengine v1.6.1 // indirect
+	github.com/go-sql-driver/mysql v1.5.0
+	github.com/gorilla/handlers v1.4.2
+	github.com/gorilla/mux v1.7.4
+	github.com/joho/godotenv v1.3.0
+	github.com/newrelic/go-agent/v3 v3.5.0
+	github.com/newrelic/go-agent/v3/integrations/nrgorilla v1.1.0
+	github.com/nicklaw5/helix v0.5.9
 )
