@@ -39,12 +39,12 @@ func main() {
 	}
 
 	r := mux.NewRouter()
-	r.HandleFunc("/", api.StreamsHandler)
 
 	if newRelicLicenseKey != "" {
-		api.SetupNewRelic(newRelicLicenseKey)
-		r = api.InstrumentRoutes(r)
+		api.SetupNewRelic(newRelicLicenseKey, r)
 	}
+
+	r.HandleFunc("/", api.StreamsHandler)
 
 	var handler http.Handler
 	handler = handlers.CORS()(r)
